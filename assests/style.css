@@ -1,0 +1,52 @@
+
+header {
+    font-family: 'Raleway', sans-serif;
+    padding: 10px;
+}
+
+body {
+ background-color: rgb(88, 128, 138);
+ font-family: 'Pathway Gothic One', sans-serif;
+}
+
+#h1 {
+    font-size: 60px;
+}
+
+.jumbotron {
+    color:rgb(185, 182, 182);
+    background-color: rgb(9, 9, 44);
+    font-size: 30px;
+    height: 130px;
+}
+
+.mainDisplay{
+    text-align: center;
+    display: flex;
+    height: 130px;
+}
+
+.searchBox{
+    display: inline-block;
+    height: 150xp;
+    padding: 2px;
+}
+
+#searchForm {
+    display: flex;
+    justify-content: right;
+}
+
+#searchBtn {
+    border-width: 5px;
+}
+
+.displayToday{
+    height: 80xp;
+    display: flex;
+    justify-content: center;
+}
+
+.currentCard{
+    width: 50%;
+}
