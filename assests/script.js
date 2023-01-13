@@ -55,20 +55,21 @@ function fetchWeather(lat, long, cityName) {
 }
 
 //fetch 5-day forcast and create cards
-function fiveDayForecast(){
+function fiveDayForecast(lat, long, cityName) {
   var weatherApiURL = 'https://api.openweathermap.org/data/2.5/forecast?units=imperial&lat=' + lat + '&lon=' + long + '&appid=' + apiKey;
   fetch(weatherApiURL)
   .then(function (response) {
     return response.json();
   })
   .then(function(data){
+    for(i=1; i<6; i++)
     var fiveDayCard = document.createElement('div');
     var fiveDayCardDate = document.createElement('h3');
     var fiveDayCardIcon = document.createElement('img');
     var fiveDayCardTemp = document.createElement('p');
     var fiveDayCardHumiditiy = document.createElement('p');
     var fiveDayCardWindSpeed = document.createElement('p');
-    fi
+    fiveDayCardIcon.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[i].weather[0].icon + '.png')
   })
 }
 
@@ -106,7 +107,8 @@ function getLatLong(name) {
     //save to local storage
     localStorage.setItem("searchedCities", JSON.stringify(searchedCities))
 
-    fetchWeather(lat, long, name)
+    fetchWeather(lat, long, name);
+    fiveDayForecast(lat, long, name);
   })
 }
 
