@@ -93,36 +93,36 @@ function fetchFiveDayForecast(lat, long) {
     return response.json();
   })
   .then(function (data){
-    dayOneDate.textContent = ""
-    dayOneIcon.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[1].weather[0].icon + '.png')
+    dayOneDate.textContent = dayjs.unix(data.list[2].dt).format('MMM D');
+    dayOneIcon.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[2].weather[0].icon + '.png')
     dayOneIcon.setAttribute('alt', 'icon that depicts the current weather conditions in the city chosen tomorrow') 
-    dayOneTemp.textContent = `Temp: ${data.list[1].main.temp.toFixed(0)}°F`
-    dayOneHumidity.textContent = `Humidity: ${data.list[1].main.humidity}%`
-    dayOneWindSpeed.textContent = `Wind Speed: ${data.list[1].wind.speed.toFixed(0)}mph`
-    dayTwoDate.textContent = ""
-    dayTwoIcon.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[2].weather[0].icon + '.png')
+    dayOneTemp.textContent = `Temp: ${data.list[2].main.temp.toFixed(0)}°F`
+    dayOneHumidity.textContent = `Humidity: ${data.list[2].main.humidity}%`
+    dayOneWindSpeed.textContent = `Wind Speed: ${data.list[2].wind.speed.toFixed(0)}mph`
+    dayTwoDate.textContent = dayjs.unix(data.list[10].dt).format('MMM D');
+    dayTwoIcon.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[10].weather[0].icon + '.png')
     dayTwoIcon.setAttribute('alt', 'icon that depicts the current weather conditions in the city chosen the day after tomorrow') 
-    dayTwoTemp.textContent = `Temp: ${data.list[2].main.temp.toFixed(0)}°F`
-    dayTwoHumidity.textContent = `Humidity: ${data.list[2].main.humidity}%`
-    dayTwoWindSpeed.textContent = `Wind Speed: ${data.list[2].wind.speed.toFixed(0)}mph`
-    dayThreeDate.textContent = ""
-    dayThreeIcon.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[3].weather[0].icon + '.png')
+    dayTwoTemp.textContent = `Temp: ${data.list[10].main.temp.toFixed(0)}°F`
+    dayTwoHumidity.textContent = `Humidity: ${data.list[10].main.humidity}%`
+    dayTwoWindSpeed.textContent = `Wind Speed: ${data.list[10].wind.speed.toFixed(0)}mph`
+    dayThreeDate.textContent = dayjs.unix(data.list[20].dt).format('MMM D');
+    dayThreeIcon.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[20].weather[0].icon + '.png')
     dayThreeIcon.setAttribute('alt', 'icon that depicts the current weather conditions in the city chosen three days from now') 
-    dayThreeTemp.textContent = `Temp: ${data.list[3].main.temp.toFixed(0)}°F`
-    dayThreeHumidity.textContent = `Humidity: ${data.list[3].main.humidity}%`
-    dayThreeWindSpeed.textContent = `Wind Speed: ${data.list[3].wind.speed.toFixed(0)}mph`
-    dayFourDate.textContent = ""
-    dayFourIcon.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[4].weather[0].icon + '.png')
+    dayThreeTemp.textContent = `Temp: ${data.list[20].main.temp.toFixed(0)}°F`
+    dayThreeHumidity.textContent = `Humidity: ${data.list[20].main.humidity}%`
+    dayThreeWindSpeed.textContent = `Wind Speed: ${data.list[20].wind.speed.toFixed(0)}mph`
+    dayFourDate.textContent = dayjs.unix(data.list[30].dt).format('MMM D');
+    dayFourIcon.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[30].weather[0].icon + '.png')
     dayFourIcon.setAttribute('alt', 'icon that depicts the current weather conditions in the city chosen four days from now') 
-    dayFourTemp.textContent = `Temp: ${data.list[2].main.temp.toFixed(0)}°F`
-    dayFourHumidity.textContent = `Humidity: ${data.list[4].main.humidity}%`
-    dayFourWindSpeed.textContent = `Wind Speed: ${data.list[4].wind.speed.toFixed(0)}mph`
-    dayFiveDate.textContent = ""
-    dayFiveIcon.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[5].weather[0].icon + '.png')
+    dayFourTemp.textContent = `Temp: ${data.list[30].main.temp.toFixed(0)}°F`
+    dayFourHumidity.textContent = `Humidity: ${data.list[30].main.humidity}%`
+    dayFourWindSpeed.textContent = `Wind Speed: ${data.list[30].wind.speed.toFixed(0)}mph`
+    dayFiveDate.textContent = dayjs.unix(data.list[39].dt).format('MMM D');
+    dayFiveIcon.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[39].weather[0].icon + '.png')
     dayFiveIcon.setAttribute('alt', 'icon that depicts the current weather conditions in the city chosen five days from now') 
-    dayFiveTemp.textContent = `Temp: ${data.list[5].main.temp.toFixed(0)}°F`
-    dayFiveHumidity.textContent = `Humidity: ${data.list[5].main.humidity}%`
-    dayFiveWindSpeed.textContent = `Wind Speed: ${data.list[5].wind.speed.toFixed(0)}mph`
+    dayFiveTemp.textContent = `Temp: ${data.list[39].main.temp.toFixed(0)}°F`
+    dayFiveHumidity.textContent = `Humidity: ${data.list[39].main.humidity}%`
+    dayFiveWindSpeed.textContent = `Wind Speed: ${data.list[39].wind.speed.toFixed(0)}mph`
 })
 }
 
