@@ -4,9 +4,35 @@ var cityName = "";
 var cityInput = document.getElementById('cityInput')
 var searchBtn = document.getElementById('searchBtn');
 var chosenCityName = document.getElementById('currentName');
+var chosenCityDate = document.getElementById('currentDate')
 var chosenCityTemp = document.getElementById('currentTemp');
 var chosenCityHumidity = document.getElementById('currentHumidity');
 var chosenCityWindSpeed = document.getElementById('currentWindSpeed');
+var dayOneDate = document.getElementById('dayOneDate')
+var dayOneIcon = document.getElementById('dayOneIcon')
+var dayOneTemp = document.getElementById('dayOneTemp')
+var dayOneHumidity = document.getElementById('dayOneHumidity')
+var dayOneWindSpeed = document.getElementById('dayOneWindSpeed')
+var dayTwoDate = document.getElementById('dayTwoDate')
+var dayTwoIcon = document.getElementById('dayTwoIcon')
+var dayTwoTemp = document.getElementById('dayTwoTemp')
+var dayTwoHumidity = document.getElementById('dayTwoHumidity')
+var dayTwoWindSpeed = document.getElementById('dayTwoWindSpeed')
+var dayThreeDate = document.getElementById('dayThreeDate')
+var dayThreeIcon = document.getElementById('dayThreeIcon')
+var dayThreeTemp = document.getElementById('dayThreeTemp')
+var dayThreeHumidity = document.getElementById('dayThreeHumidity')
+var dayThreeWindSpeed = document.getElementById('dayThreeWindSpeed')
+var dayFourDate = document.getElementById('dayFourDate')
+var dayFourIcon = document.getElementById('dayFourIcon')
+var dayFourTemp = document.getElementById('dayFourTemp')
+var dayFourHumidity = document.getElementById('dayFourHumidity')
+var dayFourWindSpeed = document.getElementById('dayFourWindSpeed')
+var dayFiveDate = document.getElementById('dayFiveDate')
+var dayFiveIcon = document.getElementById('dayFiveIcon')
+var dayFiveTemp = document.getElementById('dayFiveTemp')
+var dayFiveHumidity = document.getElementById('dayFiveHumidity')
+var dayFiveWindSpeed = document.getElementById('dayFiveWindSpeed')
 var cityList = document.getElementById('cityList');
 var searchedCities = [];
 var fiveDayForecast = document.getElementById('fiveDayForecast');
@@ -35,6 +61,10 @@ var displayOld = function () {
       getLatLong(this.textContent)})
     }
 }
+
+//create 5 day cards
+
+
 //fetch weather data for today
 function fetchWeather(lat, long, cityName) {
   var weatherApiURL = 'https://api.openweathermap.org/data/2.5/forecast?units=imperial&lat=' + lat + '&lon=' + long + '&appid=' + apiKey;
@@ -44,6 +74,7 @@ function fetchWeather(lat, long, cityName) {
   })
   .then(function (data){
     chosenCityName.textContent = `${cityName}`
+    chosenCityDate.textContent = `${dayjs().format('MMMM D')}`
     chosenCityTemp.textContent = `Temp: ${data.list[0].main.temp.toFixed(0)}°F`
     chosenCityHumidity.textContent = `Humidity: ${data.list[0].main.humidity}%`
     chosenCityWindSpeed.textContent = `Wind Speed: ${data.list[0].wind.speed.toFixed(0)}mph`
@@ -62,17 +93,36 @@ function fetchFiveDayForecast(lat, long) {
     return response.json();
   })
   .then(function (data){
-    // for(i=1; i<2; i++) {
-    // var fiveDayCard = document.createElement('div');
-    // var fiveDayCardDate = document.createElement('h3');
-    var fiveDayCardIcon = document.createElement('img');
-    // var fiveDayCardTemp = document.createElement('p');
-    // var fiveDayCardHumiditiy = document.createElement('p');
-    // var fiveDayCardWindSpeed = document.createElement('p');
-    fiveDayCardIcon.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[i].weather[0].icon + '.png')
-    fiveDayCardIcon.setAttribute('alt', 'icon that depicts the current weather conditions in the city chosen')
-    fiveDayForecast.appendChild(fiveDayCardIcon)
-//}
+    dayOneDate.textContent = ""
+    dayOneIcon.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[1].weather[0].icon + '.png')
+    dayOneIcon.setAttribute('alt', 'icon that depicts the current weather conditions in the city chosen tomorrow') 
+    dayOneTemp.textContent = `Temp: ${data.list[1].main.temp.toFixed(0)}°F`
+    dayOneHumidity.textContent = `Humidity: ${data.list[1].main.humidity}%`
+    dayOneWindSpeed.textContent = `Wind Speed: ${data.list[1].wind.speed.toFixed(0)}mph`
+    dayTwoDate.textContent = ""
+    dayTwoIcon.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[2].weather[0].icon + '.png')
+    dayTwoIcon.setAttribute('alt', 'icon that depicts the current weather conditions in the city chosen the day after tomorrow') 
+    dayTwoTemp.textContent = `Temp: ${data.list[2].main.temp.toFixed(0)}°F`
+    dayTwoHumidity.textContent = `Humidity: ${data.list[2].main.humidity}%`
+    dayTwoWindSpeed.textContent = `Wind Speed: ${data.list[2].wind.speed.toFixed(0)}mph`
+    dayThreeDate.textContent = ""
+    dayThreeIcon.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[3].weather[0].icon + '.png')
+    dayThreeIcon.setAttribute('alt', 'icon that depicts the current weather conditions in the city chosen three days from now') 
+    dayThreeTemp.textContent = `Temp: ${data.list[3].main.temp.toFixed(0)}°F`
+    dayThreeHumidity.textContent = `Humidity: ${data.list[3].main.humidity}%`
+    dayThreeWindSpeed.textContent = `Wind Speed: ${data.list[3].wind.speed.toFixed(0)}mph`
+    dayFourDate.textContent = ""
+    dayFourIcon.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[4].weather[0].icon + '.png')
+    dayFourIcon.setAttribute('alt', 'icon that depicts the current weather conditions in the city chosen four days from now') 
+    dayFourTemp.textContent = `Temp: ${data.list[2].main.temp.toFixed(0)}°F`
+    dayFourHumidity.textContent = `Humidity: ${data.list[4].main.humidity}%`
+    dayFourWindSpeed.textContent = `Wind Speed: ${data.list[4].wind.speed.toFixed(0)}mph`
+    dayFiveDate.textContent = ""
+    dayFiveIcon.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[5].weather[0].icon + '.png')
+    dayFiveIcon.setAttribute('alt', 'icon that depicts the current weather conditions in the city chosen five days from now') 
+    dayFiveTemp.textContent = `Temp: ${data.list[5].main.temp.toFixed(0)}°F`
+    dayFiveHumidity.textContent = `Humidity: ${data.list[5].main.humidity}%`
+    dayFiveWindSpeed.textContent = `Wind Speed: ${data.list[5].wind.speed.toFixed(0)}mph`
 })
 }
 
