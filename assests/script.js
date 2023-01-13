@@ -9,7 +9,7 @@ var chosenCityHumidity = document.getElementById('currentHumidity');
 var chosenCityWindSpeed = document.getElementById('currentWindSpeed');
 var cityList = document.getElementById('cityList');
 var searchedCities = [];
-var fiveDayForecast = document.getElementById('5dayForecast');
+var fiveDayForecast = document.getElementById('fiveDayForecast');
 var apiKey = "a863505749c10d6c9a31806e96c0016f";
 var lat= "";
 var long= "";
@@ -55,22 +55,25 @@ function fetchWeather(lat, long, cityName) {
 }
 
 //fetch 5-day forcast and create cards
-function fiveDayForecast(lat, long, cityName) {
+function fetchFiveDayForecast(lat, long) {
   var weatherApiURL = 'https://api.openweathermap.org/data/2.5/forecast?units=imperial&lat=' + lat + '&lon=' + long + '&appid=' + apiKey;
   fetch(weatherApiURL)
   .then(function (response) {
     return response.json();
   })
-  .then(function(data){
-    for(i=1; i<6; i++)
-    var fiveDayCard = document.createElement('div');
-    var fiveDayCardDate = document.createElement('h3');
+  .then(function (data){
+    // for(i=1; i<2; i++) {
+    // var fiveDayCard = document.createElement('div');
+    // var fiveDayCardDate = document.createElement('h3');
     var fiveDayCardIcon = document.createElement('img');
-    var fiveDayCardTemp = document.createElement('p');
-    var fiveDayCardHumiditiy = document.createElement('p');
-    var fiveDayCardWindSpeed = document.createElement('p');
+    // var fiveDayCardTemp = document.createElement('p');
+    // var fiveDayCardHumiditiy = document.createElement('p');
+    // var fiveDayCardWindSpeed = document.createElement('p');
     fiveDayCardIcon.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[i].weather[0].icon + '.png')
-  })
+    fiveDayCardIcon.setAttribute('alt', 'icon that depicts the current weather conditions in the city chosen')
+    fiveDayForecast.appendChild(fiveDayCardIcon)
+//}
+})
 }
 
 //use Geocode to fetch coordinates for weather API
@@ -108,7 +111,7 @@ function getLatLong(name) {
     localStorage.setItem("searchedCities", JSON.stringify(searchedCities))
 
     fetchWeather(lat, long, name);
-    fiveDayForecast(lat, long, name);
+    fetchFiveDayForecast(lat, long);
   })
 }
 
