@@ -5,7 +5,7 @@ header {
 }
 
 body {
- background-color: rgb(88, 128, 138);
+ background-color: rgb(85, 126, 137);
  font-family: 'Pathway Gothic One', sans-serif;
 }
 
@@ -49,4 +49,5 @@ body {
 
 .currentCard{
     width: 50%;
+    background-color: rgb(134, 201, 193);
 }
